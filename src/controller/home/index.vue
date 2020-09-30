@@ -6,16 +6,47 @@
     <div class="content">
       <!--      左侧盒-->
       <div class="aside aside-left">
-        <div class="leftLabel" @click="leftLabel(idx)" v-for= "(item,idx) in leftList">{{ item }}</div>
+        <h2 style="color: #ffffff;text-align: center;line-height:40px;">左侧列表</h2>
+        <span class="leftLabel" @click="leftLabel(idx)" :class="idx == checkIdx ? 'check-left-label': ''" v-for= "(item,idx) in leftList">{{ item }}
+        </span>
       </div>
       <!--右侧内容      -->
       <div class="aside aside-right">
-        <el-row style="background-color: #fff;padding:10px;" v-if="checkIdx == 1" :gutter="17">
-          <el-col :span="2"><div class="grid-content bg-purple">1</div></el-col>
-          <el-col :span="2"><div class="grid-content bg-purple-light">2</div></el-col>
-          <el-col :span="7"><div class="grid-content bg-purple-light">6</div></el-col>
-        </el-row>
-        <div v-if="checkIdx == 2">
+        <div v-if="checkIdx == 0" style="border: 1px solid #ebebeb;padding:20px;">
+          <el-row type="flex" :gutter="17">
+            <el-col :span="2"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="2"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="7"><div class="grid-content bg-purple-light">6</div></el-col>
+          </el-row>
+          <el-row type="flex" :gutter="0">
+            <el-col :span="6"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="6"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="12"><div class="grid-content bg-purple-dark">6</div></el-col>
+          </el-row>
+          <el-row type="flex" :gutter="4">
+            <el-col :span="8"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="8"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="8"><div class="grid-content bg-purple-dark">6</div></el-col>
+          </el-row>
+          <el-row type="flex" :gutter="17">
+            <el-col :span="2"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="2"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="7"><div class="grid-content bg-purple-dark">6</div></el-col>
+            <el-col :span="5"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="4"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="3"><div class="grid-content bg-purple">1</div></el-col>
+          </el-row>
+          <el-row type="flex" :gutter="0">
+            <el-col :span="2"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="2"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="7"><div class="grid-content bg-purple-dark">6</div></el-col>
+            <el-col :span="2"><div class="grid-content bg-purple">1</div></el-col>
+            <el-col :span="2"><div class="grid-content bg-purple-light">2</div></el-col>
+            <el-col :span="7"><div class="grid-content bg-purple-dark">6</div></el-col>
+            <el-col :span="2"><div class="grid-content bg-purple">1</div></el-col>
+          </el-row>
+        </div>
+        <div v-if="checkIdx == 1">
           ww
         </div>
       </div>
@@ -30,7 +61,7 @@ export default {
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
-      leftList: ['左侧列表', 'layout', 'Upload'],
+      leftList: ['layout', 'Upload'],
       checkIdx: 1
     }
   },
@@ -40,9 +71,9 @@ export default {
   methods: {
     leftLabel(idx) {
       console.log(idx)
-      if (idx) {
-        this.checkIdx = idx
-      }
+      // if (idx) {
+      this.checkIdx = idx
+      // }
     }
   }
 }
@@ -72,26 +103,31 @@ export default {
         box-sizing: border-box;
       }
       .aside-left {
-        width: 25%;
-        padding: 20px;
+        width: 15%;
+        padding: 10px;
+        background-color: #898993;
       }
       .aside-right {
-        width: 75%;
+        width: 85%;
         padding: 20px;
-        background-color: #c2d3e7;
       }
     }
   }
   .leftLabel {
-    width: 60%;
-    margin-left:40%;
+    width: 100%;
     height:40px;
+    display: block;
     text-align: center;
     font-size:22px;
-    color:#ffffff;
-    border-bottom:2px solid #ffffff;
+    color:#42424f;
+    background-color:#ffffff;
+    margin-bottom: 4px;
     line-height:40px;
-    background-color: #dcddef;
+    border-radius:20px;
+  }
+  .check-left-label {
+    color:#fff;
+    background-color:#42424f;
   }
   .grid-content {
     text-align: center;
